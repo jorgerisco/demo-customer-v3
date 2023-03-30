@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-customer-v3-service
+  labels:
+    name: demo-customer-v3-service
+    app: demo-customer-v3
+spec:
+  type: NodePort
+  ports:
+    - port: 3084
+      targetPort: 8081
+      nodePort: 30084
+  selector:
+    name: demo-customer-v3-pod
+    app: demo-customer-v3

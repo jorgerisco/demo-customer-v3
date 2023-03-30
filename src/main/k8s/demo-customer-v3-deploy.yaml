@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-customer-v3-deploy
+  labels:
+    name: demo-customer-v3-deploy
+    app: demo-customer-v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: demo-customer-v3-pod
+      app: demo-customer-v3
+  template:
+    metadata:
+      name: demo-customer-v3-pod
+      labels:
+        name: demo-customer-v3-pod
+        app: demo-customer-v3
+    spec:
+      containers:
+        - name: demo-customer-v3
+          image: jariscog89/demo-customer-v3:latest
+          ports:
+            - containerPort: 8081
